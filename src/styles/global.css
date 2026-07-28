@@ -185,13 +185,6 @@ html.light .moon-icon {
   }
 }
 
-.ti-cursor {
-  -webkit-background-clip: border-box !important;
-  background-clip: border-box !important;
-  color: var(--accent-soft) !important;
-  margin-left: 8px;
-}
-
 .status-dot {
   position: relative;
   width: 7px;
@@ -253,18 +246,3 @@ html.light .moon-icon {
   }
 }
 
-.animate-fade-in-delayed {
-  opacity: 0;
-  animation: fadeInIcons 0.8s cubic-bezier(0.16, 1, 0.3, 1) 6.5s forwards;
-}
-
-@keyframes fadeInIcons {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
