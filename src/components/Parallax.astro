@@ -1,0 +1,88 @@
+---
+import PROJECTS from '@/data/projects.json';
+
+const parallaxConfigs = [
+  { position: 'top-12 left-10 md:left-10 lg:left-16', size: 'w-44 md:w-60', rotate: '-rotate-6', speed: 22 },
+  { position: 'top-1/4 right-4 md:right-10 lg:right-16', size: 'w-48 md:w-64', rotate: 'rotate-6', speed: 32 },
+  { position: 'top-1/2 left-4 md:left-12 lg:left-20', size: 'w-40 md:w-56', rotate: '-rotate-3', speed: 25 },
+  { position: 'top-3/4 right-4 md:right-12 lg:right-20', size: 'w-52 md:w-68', rotate: 'rotate-3', speed: 30 },
+  { position: 'bottom-16 left-4 md:left-14 lg:left-24', size: 'w-36 md:w-52', rotate: '-rotate-2', speed: 18 },
+];
+
+const images = PROJECTS.map((p, i) => {
+  const config = parallaxConfigs[i % parallaxConfigs.length];
+  return {
+    src: p.image,
+    alt: p.title ?? `Project ${i + 1}`,
+    speed: config.speed,
+    position: config.position,
+    size: config.size,
+    rotate: config.rotate,
+  };
+});
+---
+
+<div
+  id="parallax-layer"
+  class="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none mt-30"
+  aria-hidden="true"
+>
+  {
+    images.map((img) => (
+      <img
+        src={img.src}
+        alt={img.alt}
+        data-speed={img.speed}
+        class:list={[
+          "parallax-item absolute rounded-xl border border-white/20 dark:border-white/10 shadow-2xl",
+          "opacity-20 dark:opacity-20 [html.light_&]:opacity-50 pointer-events-none select-none",
+          img.position,
+          img.size,
+          img.rotate,
+        ]}
+        loading="lazy"
+      />
+    ))
+  }
+</div>
+
+<script>
+  function initParallax() {
+    const layer = document.getElementById("parallax-layer");
+    const items = document.querySelectorAll<HTMLImageElement>(".parallax-item");
+
+    if (!layer || items.length === 0) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      targetX = (e.clientX / window.innerWidth) - 0.5;
+      targetY = (e.clientY / window.innerHeight) - 0.5;
+    };
+
+    const animate = () => {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+
+      items.forEach((item) => {
+        const speed = parseFloat(item.dataset.speed || "20");
+        const moveX = currentX * speed;
+        const moveY = currentY * speed;
+        item.style.transform = `translate3d(${moveX.toFixed(2)}px, ${moveY.toFixed(2)}px, 0)`;
+      });
+
+      requestAnimationFrame(animate);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    requestAnimationFrame(animate);
+  }
+
+  initParallax();
+</script>
