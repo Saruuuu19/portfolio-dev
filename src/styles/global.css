@@ -39,11 +39,15 @@
   --font-display: "Geist Pixel Square", "Geist Mono", monospace;
   --font-grid: "Geist Pixel Grid", "Geist Mono", monospace;
 
-  --bg: #08090b;
+  --bg: #0b0c0e;
+  --bg-image: radial-gradient(
+    circle at 50% -20%,
+    color-mix(in srgb, var(--accent) 22%, transparent),
+    transparent 36rem
+  );
 
   --text: #f2f4ef;
-  --text-soft: #8e8e93;
-  --text-faint: #6d726b;
+  --text-soft: #565658;
 
   --line: #262a2d;
   --line-strong: #393e41;
@@ -65,13 +69,14 @@
 html.light {
   color-scheme: light;
   --bg: #f4f2ed;
-  --bg-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  --bg-image: radial-gradient(
+    circle at 50% -20%,
+    color-mix(in srgb, var(--hero-purple-deep) 30%, transparent),
+    transparent 36rem
+  );
 
   --text: #1c1d21;
   --text-soft: #575c66;
-  --text-faint: #8e94a0;
 
   --line: #e4e0d7;
   --line-strong: #d4cfc3;
@@ -89,8 +94,6 @@ html.light {
   --color-accent-soft: var(--accent-soft);
   --color-text-soft: var(--text-soft);
   --color-text-faint: var(--text-faint);
-
-  --gradient-accent: linear-gradient(90deg, var(--accent), var(--purple));
 }
 
 html {
@@ -106,6 +109,9 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--bg);
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+
   color: var(--text);
   font-family: var(--font-body);
   transition:
