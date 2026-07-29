@@ -1,0 +1,98 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+const iconsDir = path.resolve('./public/icons/stack');
+
+const frontendStackRaw = [
+  { name: "Astro", file: "astro.svg" },
+  { name: "TypeScript", file: "typescript.svg" },
+  { name: "Tailwind CSS", file: "tailwindcss.svg" },
+];
+
+const backendStackRaw = [
+  { name: "Python", file: "python.svg" },
+  { name: "FastAPI", file: "fastapi.svg" },
+  { name: "PostgreSQL", file: "postgresql.svg" },
+  { name: "Docker", file: "docker.svg" },
+];
+
+const withSvg = (stack: typeof frontendStackRaw | typeof backendStackRaw) => stack.map((item) => {
+  const filePath = path.join(iconsDir, item.file);
+  const svg = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf-8') : '';
+  return { ...item, svg };
+});
+
+const frontendStack = withSvg(frontendStackRaw);
+const backendStack = withSvg(backendStackRaw);
+---
+
+<section aria-label="Tecnologías" class="w-full max-w-lg mx-auto mt-5 flex flex-col gap-8">
+
+  <!-- Frontend -->
+  <div class="flex flex-col">
+    <div class="marquee-container relative flex w-full select-none overflow-hidden py-2 marquee-mask">
+      <ul role="list" aria-label="Tecnologías frontend" class="marquee-track list-none flex shrink-0 items-center gap-10 animate-marquee">
+        {frontendStack.map((tech) => (
+          <li class="flex items-center gap-2.5 group transition-transform duration-300 hover:scale-105">
+            <div
+              class="stack-icon h-8 w-8 shrink-0 flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300 [&_svg]:h-full [&_svg]:w-full [&_svg]:object-contain"
+              aria-hidden="true"
+              set:html={tech.svg}
+            />
+            <span class="text-sm text-[--text-soft] group-hover:text-[--text] font-medium transition-colors duration-300 whitespace-nowrap">
+              {tech.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <ul role="list" aria-hidden="true" class="marquee-track list-none flex shrink-0 items-center gap-10 animate-marquee">
+        {frontendStack.map((tech) => (
+          <li class="flex items-center gap-2.5 group transition-transform duration-300 hover:scale-105">
+            <div
+              class="stack-icon h-8 w-8 shrink-0 flex items-center justify-center opacity-60 [&_svg]:h-full [&_svg]:w-full [&_svg]:object-contain"
+              set:html={tech.svg}
+            />
+            <span class="text-sm text-[--text-soft] font-medium whitespace-nowrap">
+              {tech.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Backend -->
+  <div class="flex flex-col gap-3">
+    <div class="marquee-container relative flex w-full select-none overflow-hidden py-2 marquee-mask">
+      <ul role="list" aria-label="Tecnologías backend" class="marquee-track list-none flex shrink-0 items-center gap-10 animate-marquee-reverse">
+        {backendStack.map((tech) => (
+          <li class="flex items-center gap-2.5 group transition-transform duration-300 hover:scale-105">
+            <div
+              class="stack-icon h-8 w-8 shrink-0 flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300 [&_svg]:h-full [&_svg]:w-full [&_svg]:object-contain"
+              aria-hidden="true"
+              set:html={tech.svg}
+            />
+            <span class="text-sm text-[--text-soft] group-hover:text-[--text] font-medium transition-colors duration-300 whitespace-nowrap">
+              {tech.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <ul role="list" aria-hidden="true" class="marquee-track list-none flex shrink-0 items-center gap-10 animate-marquee-reverse">
+        {backendStack.map((tech) => (
+          <li class="flex items-center gap-2.5 group transition-transform duration-300 hover:scale-105">
+            <div
+              class="stack-icon h-8 w-8 shrink-0 flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300 [&_svg]:h-full [&_svg]:w-full [&_svg]:object-contain"
+              set:html={tech.svg}
+            />
+            <span class="text-sm text-[--text-soft] group-hover:text-[--text] font-medium transition-colors duration-300 whitespace-nowrap">
+              {tech.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+</section>
