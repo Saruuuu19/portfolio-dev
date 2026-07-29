@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Astroship (placeholder)",
+    "description": "Descripción genérica para Astroship. Cambia esto por una descripción real más adelante.",
+    "link": "",
+    "github": "",
+    "image": "/projects/astroship.webp",
+    "tags": ["ASTRO", "TEMPLATE"]
+  },
+  {
+    "title": "Starlight (placeholder)",
+    "description": "Descripción genérica para Starlight. Cambia esto por una descripción real más adelante.",
+    "link": "",
+    "github": "",
+    "image": "/projects/starlight.webp",
+    "tags": ["ASTRO", "DOCS"]
+  },
+  {
+    "title": "Dark Rise (placeholder)",
+    "description": "Descripción genérica para Dark Rise. Cambia esto por una descripción real más adelante.",
+    "link": "",
+    "github": "",
+    "image": "/projects/dark-rise.webp",
+    "tags": ["UI", "DASHBOARD"]
+  },
+  {
+    "title": "Prima Persona (placeholder)",
+    "description": "Descripción genérica para Prima Persona. Cambia esto por una descripción real más adelante.",
+    "link": "",
+    "github": "",
+    "image": "/projects/prima-persona.webp",
+    "tags": ["PORTFOLIO", "DESIGN"]
+  },
+  {
+    "title": "SaaS (placeholder)",
+    "description": "Descripción genérica para SaaS. Cambia esto por una descripción real más adelante.",
+    "link": "",
+    "github": "",
+    "image": "/projects/saas.webp",
+    "tags": ["SAAS", "LANDING"]
+  }
+]
