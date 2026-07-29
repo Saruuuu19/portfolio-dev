@@ -25,19 +25,9 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Geist Pixel Grid";
-  src: url("/fonts/geist-pixel/GeistPixel-Grid.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
 :root {
   color-scheme: dark;
   --font-body: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-display: "Geist Pixel Square", "Geist Mono", monospace;
-  --font-grid: "Geist Pixel Grid", "Geist Mono", monospace;
 
   --bg: #0b0c0e;
   --bg-image: radial-gradient(
@@ -47,23 +37,13 @@
   );
 
   --text: #f2f4ef;
-  --text-soft: #565658;
-
-  --line: #262a2d;
-  --line-strong: #393e41;
+  --text-soft: #bdbdbf;
 
   --accent: #8d56eb;
-  --accent-soft: #8d56eb9e;
 
   --hero-purple: #8d56eb;
   --hero-purple-light: #bca9fb;
   --hero-purple-deep: #6f35e0;
-
-  --green: #5ce681;
-  --green-soft: #01e5607d;
-
-  --header: rgba(8, 9, 11, 0.84);
-  --shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
 }
 
 html.light {
@@ -76,13 +56,7 @@ html.light {
   );
 
   --text: #1c1d21;
-  --text-soft: #575c66;
-
-  --line: #e4e0d7;
-  --line-strong: #d4cfc3;
-
-  --header: rgba(244, 242, 237, 0.88);
-  --shadow: 0 28px 80px rgba(0, 0, 0, 0.07);
+  --text-soft: #3f4044;
 }
 
 @theme {
@@ -91,9 +65,7 @@ html.light {
   --font-pixel: "Geist Pixel Square", monospace;
 
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
   --color-text-soft: var(--text-soft);
-  --color-text-faint: var(--text-faint);
 }
 
 html {
